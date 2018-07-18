@@ -3,7 +3,7 @@ var PubSub = {};
 (function(p){
     "use strict";
 
-    var topics = {},
+    var topics = {};
     var lastUid = -1;
 
     var publish = function( topic, data ){
@@ -12,16 +12,15 @@ var PubSub = {};
         }
 
         var notify = function(){
+            var subscribers = topics[topic];
 
-            var subscribers = topics[topic],
-                throwException = function(e){
+            var throwException = function(e){
                 return function(){
                     throw e;
                 };
             };
 
-            //for (var i = 0, j = subscribers.length; i < j; i++){
-            for (var i = 0, i < subscribers.length; i++){
+            for (var i = 0; i < subscribers.length; i++){
                 try {
                     subscribers[i].func(topic, data);
                 } catch( e ){
@@ -80,3 +79,5 @@ var PubSub = {};
     };
 
 }(PubSub));
+
+module.exports = PubSub;
