@@ -84,14 +84,8 @@ var PubSub = function(){
         return false;
     };
 
-<<<<<<< HEAD
-}(PubSub));
-
-module.exports = PubSub;
-=======
     return p;
 
 };
 
 module.exports = PubSub();
->>>>>>> editing pubsub
