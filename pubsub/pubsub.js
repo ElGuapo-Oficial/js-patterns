@@ -1,7 +1,13 @@
-var PubSub = {};
+//(function (exports, require, module, __filename, __dirname){
+// (Yes) module.exports = PubSub;
+// (Yes) module.exports.log = PubSub;
+// (Yes) exports.log = PubSub;
+// (No)  exports = PubSub // exports parameter is a reference to module.exports
+// cannot be changed
 
-(function(p){
+var PubSub = function(){
     "use strict";
+    var p = {};
 
     var topics = {};
     var lastUid = -1;
@@ -78,6 +84,8 @@ var PubSub = {};
         return false;
     };
 
-}(PubSub));
+    return p;
 
-module.exports = PubSub;
+};
+
+module.exports = PubSub();
